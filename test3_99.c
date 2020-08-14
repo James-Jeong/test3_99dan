@@ -90,29 +90,33 @@ void test3_99_clear( test3_99_t *cal){
 void test3_99_display( test3_99_t *cal){
 	if( cal == NULL) return ;
 
-	int cur_width_count = 0;
-	int space_idx = 0;
+	int print_count = 0;
+	int accum_height_count = 0;
+	int cur_height_count = 1;
+	int space_idx;
 	int i, j, x, y;
-	while( 1){
-		for( y = 1; y < MAX_NWIDTH; y++){
-			if( y == cal->val) break;
-			for( ; space_idx < cur_width_count; space_idx++) printf("     ");
-			for( i = 1; i <= y; i++){
-				for( j = 1; j <= i; j++){
-					printf("%d ", ( i * j));
+
+	for( x = 0; x < MAX_NWIDTH; x++){
+		for( y = 0; y < MAX_NWIDTH; y++){
+			for( space_idx = 0; space_idx < cur_height_count-1; space_idx++) printf("\t");
+			for( i = cur_height_count; i <= MAX_NWIDTH; i++){
+				for( j = 1; j <= i + accum_height_count; j++){
+					printf("%d ", ( j * cur_height_count));
 				}
-				printf("     ");
+				if( i == cal->val) break;
+				printf("\t");
 			}
+			printf("\n");
+			cur_height_count++;
+			print_count++;
+			if( print_count == cal->val) break;
 		}
 		printf("\n");
-		cur_width_count++;
-
-		if( cur_width_count == MAX_NWIDTH){
-			cur_width_count = 0;
-			printf("\n");
-		}
-		else break;
+		accum_height_count += cur_height_count - 1;
+		cur_height_count = 1;
+		if( print_count == cal->val) break;
 	}
+	printf("print_count : %d\n", print_count); 
 }
 
 static void test3_99_get_value( test3_99_t *cal){
