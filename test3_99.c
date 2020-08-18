@@ -117,6 +117,12 @@ void test3_99_display( test3_99_t *cal){
 	}
 }
 
+/**
+ * @fn static void test3_99_get_value( test2_99_t *cal)
+ * @brief function to get 99dan values of test2_99_t struct object
+ * @param cal test2_99_t struct object to get values
+ * @return void
+ */
 static void test3_99_get_value( test3_99_t *cal){
 	/** return value to check error for val */
 	int rv_val = CAL_FAIL;
@@ -133,6 +139,12 @@ static void test3_99_get_value( test3_99_t *cal){
 	}
 }
 
+/**
+ * @fn static int test3_99_input_data( int *val)
+ * @brief common function to input data
+ * @param val value by scanf function
+ * @return success
+ */
 static int test3_99_input_data( int *val){
 	int rv = scanf( "%d", val);
 
