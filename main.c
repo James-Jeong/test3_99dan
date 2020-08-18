@@ -8,9 +8,8 @@
  * @param argv none
  */
 int main( int argc, char **argv){
-	test3_99dan_t *cal = test3_99dan_create();
-	if( cal == NULL) return CAL_FAIL;
-	test3_99dan_display( cal);
-	test3_99dan_destroy( &cal);
+	int dan_number = 0;
+	test3_99dan_input_dan_number( &dan_number);
+	test3_99dan_display_99dan_result( dan_number);
 }
 

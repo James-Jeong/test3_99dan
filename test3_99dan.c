@@ -2,94 +2,41 @@
 //////////////////////////////////////
 // static function for test3_99dan_t
 //////////////////////////////////////
-static void test3_99dan_get_value( test3_99dan_t *cal);
-static int test3_99dan_input_data( int *val);
+static int test3_99dan_input_number( int *val);
 
 //////////////////////////////////////
 // local function for test3_99dan_t
 //////////////////////////////////////
 /**
- * @fn test3_99dan_t* test3_99dan_create()
- * @brief function to create test3_99dan_t struct object
- * @param val first value to calculate
- * @param seq second value to calculate
- * @return test3_99dan_t struct object
+ * @fn int test3_99dan_input_dan_number()
+ * @brief 구구단 숫자를 입력받는 함수
+ * @param dan_number 입력받을 단수
+ * @return 입력 성공 여부
  */
-test3_99dan_t* test3_99dan_create(){
+int test3_99dan_input_dan_number( int *dan_number){
+	/** return value to check error for val */
 	int rv = CAL_FAIL;
+	*dan_number = DEFAULT_INT;
 
-	test3_99dan_t *cal = ( test3_99dan_t*)malloc( sizeof( test3_99dan_t));
-	if( cal == NULL){
-		printf("\t| ! Fail to allocate test3_99dan_t.\n");
-		return NULL;
+	while( 1){
+		if(( *dan_number == DEFAULT_INT) && ( rv == CAL_FAIL)){
+			printf("\t| @ Enter 99dan number\t: ");
+			rv = test3_99dan_input_number( dan_number);
+			if( rv < CAL_SUCCESS) continue;
+		}
+		if(( *dan_number != DEFAULT_INT) && ( rv == CAL_SUCCESS)) break;
 	}
 
-	rv = test3_99dan_init( cal); if( rv < CAL_SUCCESS){
-		printf("\t| ! Fail to initialize test3_99dan_t.\n");
-		return NULL;
-	}
-
-	return cal;
+	return rv;
 }
 
 /**
- * @fn int test3_99dan_init( test3_99dan_t *cal)
- * @brief function to initialize test3_99dan_t struct object
- * @param cal test3_99dan_t struct object to initialize
- * @param val first value to calculate
- * @param seq second value to calculate
- * @return success
+ * @fn void test3_99dan_display_99dan_result( int dan_number)
+ * @brief 구구단 계산 결과를 출력하는 함수
+ * @param dan_number 계산 및 출력될 최대 구구단 숫자
+ * @return 설정하지 않음
  */
-int test3_99dan_init( test3_99dan_t *cal){
-	if( cal != NULL){
-		memset( cal, 0, sizeof( test3_99dan_t));
-		test3_99dan_get_value( cal);
-	}
-	else return CAL_FAIL;
-	return CAL_SUCCESS;
-}
-
-/**
- * @fn void test3_99dan_final( test3_99dan_t *cal)
- * @brief function to finalize test3_99dan_t struct object, destroy memory of member objects
- * @param cal test3_99dan_t struct object to finalize
- * @return void
- */
-void test3_99dan_final( test3_99dan_t *cal){
-	test3_99dan_clear( cal);
-}
-
-/**
- * @fn void test3_99dan_destroy( test3_99dan_t **cal)
- * @brief function to detroy memory of test3_99dan_t struct object
- * @param cal test3_99dan_t struct object to destroy
- * @return void
- */
-void test3_99dan_destroy( test3_99dan_t **cal){
-	test3_99dan_final( *cal);
-	free( *cal);
-	*cal = NULL;
-}
-
-/**
- * @fn void test3_99dan_clear( test3_99dan_t *cal)
- * @brief function to clear data of test3_99dan_t struct object
- * @param cal test3_99dan_t struct object to clear
- * @return void
- */
-void test3_99dan_clear( test3_99dan_t *cal){
-	if( cal != NULL) memset( cal, 0, sizeof( test3_99dan_t));
-}
-
-/**
- * @fn void test3_99dan_display( test3_99dan_t *cal)
- * @brief function to print 99dan result of test3_99dan_t struct object
- * @param cal test3_99dan_t struct object to print
- * @return void
- */
-void test3_99dan_display( test3_99dan_t *cal){
-	if( cal == NULL) return ;
-
+void test3_99dan_display_99dan_result( int dan_number){
 	/** accumulative dan number to break loop & check current dan number */
 	int accum_dan = 0;
 	/** temporary width value to print until static width value */
@@ -97,7 +44,7 @@ void test3_99dan_display( test3_99dan_t *cal){
 	/** temporary height value to print until static height value */
 	int height;
 	/** level value to define level, level is the area for printing 99dan by the static value of width & height */
-	int level = ( cal->val / MAX_NWIDTH) + 1;
+	int level = ( dan_number / MAX_NWIDTH) + 1;
 	/** current level value to check level */
 	int cur_level;
 	/** current 99dan number */
@@ -109,44 +56,22 @@ void test3_99dan_display( test3_99dan_t *cal){
 			for( width = 1; width <= MAX_NWIDTH; width++){ // manage width upto MAX_NWIDTH
 				n99dan = width + accum_dan;
 				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height));
-				if( n99dan >= cal->val) break;
+				if( n99dan >= dan_number) break;
 				if( width != MAX_NWIDTH) printf("  \t\t| "); // print tab
 			} printf("\n");
 		} printf("\n");
 		accum_dan += MAX_NWIDTH;
-		if( accum_dan >= cal->val) break;
+		if( accum_dan >= dan_number) break;
 	}
 }
 
 /**
- * @fn static void test3_99dan_get_value( test2_99_t *cal)
- * @brief function to get 99dan values of test2_99_t struct object
- * @param cal test2_99_t struct object to get values
- * @return void
- */
-static void test3_99dan_get_value( test3_99dan_t *cal){
-	/** return value to check error for val */
-	int rv_val = CAL_FAIL;
-	cal->val = DEFAULT_INT;
-
-	while( 1){
-		if(( cal->val == DEFAULT_INT) && ( rv_val == CAL_FAIL)){
-			printf("\t| @ Enter 99dan value\t: ");
-			rv_val = test3_99dan_input_data( &cal->val);
-			if( rv_val < CAL_SUCCESS) continue;
-		}
-
-		if(( cal->val != DEFAULT_INT) && ( rv_val == CAL_SUCCESS)) break;
-	}
-}
-
-/**
- * @fn static int test3_99dan_input_data( int *val)
- * @brief common function to input data
+ * @fn static int test3_99dan_input_number( int *val)
+ * @brief 구구단 숫자 입력 시 사용될 함수, scanf 사용
  * @param val value by scanf function
- * @return success
+ * @return 입력 성공 여부
  */
-static int test3_99dan_input_data( int *val){
+static int test3_99dan_input_number( int *val){
 	int rv = scanf( "%d", val);
 
 	if( rv == CAL_FAIL){

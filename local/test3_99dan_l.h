@@ -15,31 +15,20 @@
 #define CAL_SUCCESS 1
 /** 실패 여부 */
 #define CAL_FAIL 0
-/** default value to calculate */
+/** 숫자 정상 입력 확인 여부, 정상 입력 실패 시 해당 변수가 DEFAULT_INT 로 초기화됨 */
 #define DEFAULT_INT INT_MAX
-/** default value to calculate */
+/** 구구단 진행 최대 개수 */
 #define MAX_NCAL 10
-/** default width to print */
+/** 가로 출력 최대 개수 */
 #define MAX_NWIDTH 5
-/** default height to print */
+/** 세로 출력 최대 개수 */
 #define MAX_NHEIGHT 10
-
-/**@brief test3_99dan_t struct */
-typedef struct test3_99dan_s test3_99dan_t;
-struct test3_99dan_s{
-	int val;		/**< dan number to calculate */
-};
 
 //////////////////////////////////////
 // function for test3_99dan_t
 //////////////////////////////////////
-test3_99dan_t* test3_99dan_create();
-int test3_99dan_init( test3_99dan_t *cal);
-void test3_99dan_final( test3_99dan_t *cal);
-void test3_99dan_destroy( test3_99dan_t **cal);
-
-void test3_99dan_display( test3_99dan_t *cal);
-void test3_99dan_clear( test3_99dan_t *cal);
+int test3_99dan_input_dan_number( int *dan_number);
+void test3_99dan_display( int dan_number);
 
 #endif // #ifndef __TEST3_99DAN_H__
 
