@@ -1,5 +1,5 @@
-#ifndef __TEST3_99_H__
-#define __TEST3_99_H__
+#ifndef __TEST3_99DAN_H__
+#define __TEST3_99DAN_H__
 
 //////////////////////////////////////
 // definition & macro for test3_99dan_t
@@ -41,5 +41,5 @@ void test3_99dan_destroy( test3_99dan_t **cal);
 void test3_99dan_display( test3_99dan_t *cal);
 void test3_99dan_clear( test3_99dan_t *cal);
 
-#endif // #ifndef __TEST3_99_H__
+#endif // #ifndef __TEST3_99DAN_H__
 
