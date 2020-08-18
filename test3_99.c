@@ -107,7 +107,7 @@ void test3_99_display( test3_99_t *cal){
 			for( width = 1; width <= MAX_NWIDTH; width++){ // manage width upto MAX_NWIDTH
 				printf("(%d) X (%d) = %d ", ( width + accum_dan), height, (( width + accum_dan) * height));
 				if(( width + accum_dan) >= cal->val) break;
-				printf("  \t| "); // print tab
+				if( width != MAX_NWIDTH) printf("  \t| "); // print tab
 			}
 			printf("\n");
 		}
