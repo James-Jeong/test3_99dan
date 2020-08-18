@@ -21,6 +21,8 @@
 #define MAX_NCAL 10
 /** default width to print */
 #define MAX_NWIDTH 5
+/** default height to print */
+#define MAX_NHEIGHT 10
 
 /**@brief test3_99_t struct */
 typedef struct test3_99_s test3_99_t;

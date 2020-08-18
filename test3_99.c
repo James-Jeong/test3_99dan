@@ -90,33 +90,31 @@ void test3_99_clear( test3_99_t *cal){
 void test3_99_display( test3_99_t *cal){
 	if( cal == NULL) return ;
 
-	int print_count = 0;
-	int accum_height_count = 0;
-	int cur_height_count = 1;
-	int space_idx;
-	int i, j, x, y;
+	/** accumulative height value to break loop & check current dan number */
+	int accum_dan = 0;
+	/** temporary width value to print until static width value */
+	int width;
+	/** temporary height value to print until static height value */
+	int height;
+	/** level value to define level, level is the area for printing 99dan by the static value of width & height */
+	int level = ( cal->val / MAX_NWIDTH) + 1;
+	/** current level value to check level */
+	int cur_level;
 
-	for( x = 0; x < MAX_NWIDTH; x++){
-		for( y = 0; y < MAX_NWIDTH; y++){
-			for( space_idx = 0; space_idx < cur_height_count-1; space_idx++) printf("\t");
-			for( i = cur_height_count; i <= MAX_NWIDTH; i++){
-				for( j = 1; j <= i + accum_height_count; j++){
-					printf("%d ", ( j * cur_height_count));
-				}
-				if( i == cal->val) break;
-				printf("\t");
+	printf("\n");
+	for( cur_level = 1; cur_level <= level; cur_level++){ // manage level
+		for( height = 1; height <= MAX_NHEIGHT; height++){ // manage height upto MAX_NHEIGHT
+			for( width = 1; width <= MAX_NWIDTH; width++){ // manage width upto MAX_NWIDTH
+				printf("(%d) X (%d) = %d ", ( width + accum_dan), height, (( width + accum_dan) * height));
+				if(( width + accum_dan) >= cal->val) break;
+				printf("  \t| "); // print tab
 			}
 			printf("\n");
-			cur_height_count++;
-			print_count++;
-			if( print_count == cal->val) break;
 		}
 		printf("\n");
-		accum_height_count += cur_height_count - 1;
-		cur_height_count = 1;
-		if( print_count == cal->val) break;
+		accum_dan += MAX_NWIDTH;
+		if( accum_dan >= cal->val) break;
 	}
-	printf("print_count : %d\n", print_count); 
 }
 
 static void test3_99_get_value( test3_99_t *cal){
@@ -137,12 +135,24 @@ static void test3_99_get_value( test3_99_t *cal){
 
 static int test3_99_input_data( int *val){
 	int rv = scanf( "%d", val);
+
 	if( rv == CAL_FAIL){
 		printf("\t| ! Wrong value, value is not integer!\n");
 		*val = DEFAULT_INT;
 		while( getchar() != '\n');
 		return rv;
 	}
+	else if( *val <= CAL_FAIL){
+		printf("\t| ! Wrong value, value is not positive!\n");
+		*val = DEFAULT_INT;
+		return CAL_FAIL;
+	}
+	else if( *val >= INT_MAX){
+		printf("\t| ! Wrong value, value is over INT_MAX!\n");
+		*val = DEFAULT_INT;
+		return CAL_FAIL;
+	}
+
 	return rv;
 }
 
