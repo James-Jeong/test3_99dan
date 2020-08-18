@@ -38,7 +38,6 @@ int test3_99_init( test3_99_t *cal);
 void test3_99_final( test3_99_t *cal);
 void test3_99_destroy( test3_99_t **cal);
 
-void test3_99_calculate( test3_99_t *cal);
 void test3_99_display( test3_99_t *cal);
 void test3_99_clear( test3_99_t *cal);
 

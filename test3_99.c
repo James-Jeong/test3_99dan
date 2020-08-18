@@ -100,18 +100,19 @@ void test3_99_display( test3_99_t *cal){
 	int level = ( cal->val / MAX_NWIDTH) + 1;
 	/** current level value to check level */
 	int cur_level;
+	/** current 99dan number */
+	int n99dan;
 
 	printf("\n");
 	for( cur_level = 1; cur_level <= level; cur_level++){ // manage level
 		for( height = 1; height <= MAX_NHEIGHT; height++){ // manage height upto MAX_NHEIGHT
 			for( width = 1; width <= MAX_NWIDTH; width++){ // manage width upto MAX_NWIDTH
-				printf("(%d) X (%d) = %d ", ( width + accum_dan), height, (( width + accum_dan) * height));
-				if(( width + accum_dan) >= cal->val) break;
+				n99dan = width + accum_dan;
+				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height));
+				if( n99dan >= cal->val) break;
 				if( width != MAX_NWIDTH) printf("  \t| "); // print tab
-			}
-			printf("\n");
-		}
-		printf("\n");
+			} printf("\n");
+		} printf("\n");
 		accum_dan += MAX_NWIDTH;
 		if( accum_dan >= cal->val) break;
 	}
