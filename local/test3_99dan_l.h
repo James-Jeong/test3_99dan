@@ -2,7 +2,7 @@
 #define __TEST3_99_H__
 
 //////////////////////////////////////
-// definition & macro for test3_99_t
+// definition & macro for test3_99dan_t
 //////////////////////////////////////
 
 #include <stdio.h>
@@ -24,22 +24,22 @@
 /** default height to print */
 #define MAX_NHEIGHT 10
 
-/**@brief test3_99_t struct */
-typedef struct test3_99_s test3_99_t;
-struct test3_99_s{
+/**@brief test3_99dan_t struct */
+typedef struct test3_99dan_s test3_99dan_t;
+struct test3_99dan_s{
 	int val;		/**< dan number to calculate */
 };
 
 //////////////////////////////////////
-// function for test3_99_t
+// function for test3_99dan_t
 //////////////////////////////////////
-test3_99_t* test3_99_create();
-int test3_99_init( test3_99_t *cal);
-void test3_99_final( test3_99_t *cal);
-void test3_99_destroy( test3_99_t **cal);
+test3_99dan_t* test3_99dan_create();
+int test3_99dan_init( test3_99dan_t *cal);
+void test3_99dan_final( test3_99dan_t *cal);
+void test3_99dan_destroy( test3_99dan_t **cal);
 
-void test3_99_display( test3_99_t *cal);
-void test3_99_clear( test3_99_t *cal);
+void test3_99dan_display( test3_99dan_t *cal);
+void test3_99dan_clear( test3_99dan_t *cal);
 
-#endif // __TEST3_99_H__
+#endif // #ifndef __TEST3_99_H__
 
