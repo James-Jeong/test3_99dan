@@ -110,7 +110,7 @@ void test3_99dan_display( test3_99dan_t *cal){
 				n99dan = width + accum_dan;
 				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height));
 				if( n99dan >= cal->val) break;
-				if( width != MAX_NWIDTH) printf("  \t| "); // print tab
+				if( width != MAX_NWIDTH) printf("  \t\t| "); // print tab
 			} printf("\n");
 		} printf("\n");
 		accum_dan += MAX_NWIDTH;
@@ -160,7 +160,7 @@ static int test3_99dan_input_data( int *val){
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
 	}
-	else if( *val >= INT_MAX){
+	else if( *val >= DEFAULT_INT){
 		printf("\t| ! Wrong value, value is over INT_MAX!\n");
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
