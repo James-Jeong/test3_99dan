@@ -15,6 +15,7 @@ static int test3_99dan_input_number( int *val);
  */
 int test3_99dan_input_width_number( int *width_number){
 	int rv = CAL_FAIL;
+	if( *width_number != DEFAULT_INT) *width_number = DEFAULT_INT;
 
 	while( 1){
 		if(( *width_number == DEFAULT_INT) && ( rv == CAL_FAIL)){
@@ -35,6 +36,11 @@ int test3_99dan_input_width_number( int *width_number){
  * @return 설정하지 않음
  */
 void test3_99dan_display_99dan_result( int width_number){
+	if( width_number > MAX_NWIDTH){
+		printf("\t| ! width_number is over max number(5)!\n");
+		return ;
+	}
+
 	/** accumulative dan number to break loop & check current dan number */
 	int accum_dan = 0;
 	/** temporary width value to print until static width value */
