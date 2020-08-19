@@ -8,8 +8,13 @@
  * @return none
  */
 void main(){
-	int dan_number = 0;
-	test3_99dan_input_dan_number( &dan_number);
+	int rv = CAL_FAIL;
+	int dan_number = DEFAULT_INT;
+	rv = test3_99dan_input_dan_number( &dan_number);
+	if( rv < CAL_SUCCESS){
+		printf("\t| ! Input dan number error\n");
+		return ;
+	}
 	test3_99dan_display_99dan_result( dan_number);
 }
 

@@ -16,7 +16,6 @@ static int test3_99dan_input_number( int *val);
 int test3_99dan_input_dan_number( int *dan_number){
 	/** return value to check error for val */
 	int rv = CAL_FAIL;
-	*dan_number = DEFAULT_INT;
 
 	while( 1){
 		if(( *dan_number == DEFAULT_INT) && ( rv == CAL_FAIL)){
@@ -32,8 +31,8 @@ int test3_99dan_input_dan_number( int *dan_number){
 
 /**
  * @fn void test3_99dan_display_99dan_result( int dan_number)
- * @brief 구구단 계산 결과를 출력하는 함수
- * @param dan_number 계산 및 출력될 최대 구구단 숫자
+ * @brief 구구단을 계산해서 결과를 출력하는 함수, 정해진 단까지 출력한다.
+ * @param dan_number 계산 및 출력될 최대 구구단 단수
  * @return 설정하지 않음
  */
 void test3_99dan_display_99dan_result( int dan_number){
