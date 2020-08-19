@@ -19,6 +19,8 @@
 #define DEFAULT_INT INT_MAX
 /** 구구단 진행 최대 단수 */
 #define MAX_NCAL 10
+/** 가로 출력 최대 개수 */
+#define MAX_NWIDTH 5
 /** 세로 출력 최대 개수 */
 #define MAX_NHEIGHT 10
 

@@ -18,7 +18,7 @@ int test3_99dan_input_width_number( int *width_number){
 
 	while( 1){
 		if(( *width_number == DEFAULT_INT) && ( rv == CAL_FAIL)){
-			printf("\t| @ Enter 99dan width number\t: ");
+			printf("\t| @ Enter 99dan width number (1~5)\t: ");
 			rv = test3_99dan_input_number( width_number);
 			if( rv < CAL_SUCCESS) continue;
 		}
@@ -83,8 +83,8 @@ static int test3_99dan_input_number( int *val){
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
 	}
-	else if( *val >= DEFAULT_INT){
-		printf("\t| ! Wrong value, value is over INT_MAX!\n");
+	else if( *val > MAX_NWIDTH){
+		printf("\t| ! Wrong value, value is over max width number(5)!\n");
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
 	}
