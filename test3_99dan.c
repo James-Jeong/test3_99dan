@@ -30,7 +30,7 @@ int test3_99dan_input_width_number( int *width_number){
 
 /**
  * @fn void test3_99dan_display_99dan_result( int width_number)
- * @brief 구구단을 계산해서 결과를 출력하는 함수, 가로로 출력하는 단의 개수에 따라 1단부터 10단까지 출력한다.
+ * @brief 구구단을 계산해서 결과를 출력하는 함수, 가로로 출력하는 단의 개수(최대 5개)에 따라 1단부터 10단까지 출력한다.
  * @param width_number 가로로 출력하는 단의 개수
  * @return 설정하지 않음
  */
