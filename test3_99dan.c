@@ -67,7 +67,7 @@ void test3_99dan_display_99dan_result( int dan_number){
 /**
  * @fn static int test3_99dan_input_number( int *val)
  * @brief 구구단 숫자 입력 시 사용될 함수, scanf 사용
- * @param val value by scanf function
+ * @param val 입력받을 int형 정수 변수
  * @return 입력 성공 여부
  */
 static int test3_99dan_input_number( int *val){
