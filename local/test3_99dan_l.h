@@ -17,7 +17,7 @@
 #define CAL_FAIL 0
 /** 숫자 정상 입력 확인 여부, 정상 입력 실패 시 해당 변수가 DEFAULT_INT 로 초기화됨 */
 #define DEFAULT_INT INT_MAX
-/** 구구단 진행 최대 개수 */
+/** 구구단 진행 최대 단수 */
 #define MAX_NCAL 10
 /** 가로 출력 최대 개수 */
 #define MAX_NWIDTH 5

@@ -55,7 +55,7 @@ void test3_99dan_display_99dan_result( int dan_number){
 		for( height = 1; height <= MAX_NHEIGHT; height++){ // manage height upto MAX_NHEIGHT
 			for( width = 1; width <= MAX_NWIDTH; width++){ // manage width upto MAX_NWIDTH
 				n99dan = width + accum_dan;
-				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height));
+				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height)); // calculate & print 99dan
 				if( n99dan >= dan_number) break;
 				if( width != MAX_NWIDTH) printf("  \t\t| "); // print tab
 			} printf("\n");
