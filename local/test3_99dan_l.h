@@ -8,7 +8,7 @@
 #include <limits.h>
 
 //////////////////////////////////////
-// Definitions & Macros for test3_99dan_t
+// Definitions & Macros
 //////////////////////////////////////
 
 /** 성공 여부 */
@@ -25,7 +25,7 @@
 #define MAX_NHEIGHT 10
 
 //////////////////////////////////////
-// Functions for test3_99dan_t
+// Functions
 //////////////////////////////////////
 
 void test3_99dan_input_width_number( int *width_number);
