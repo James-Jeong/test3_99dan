@@ -1,15 +1,15 @@
 #ifndef __TEST3_99DAN_H__
 #define __TEST3_99DAN_H__
 
-//////////////////////////////////////
-// definition & macro for test3_99dan_t
-//////////////////////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 #include <limits.h>
+
+//////////////////////////////////////
+// Definitions & Macros for test3_99dan_t
+//////////////////////////////////////
 
 /** 성공 여부 */
 #define CAL_SUCCESS 1
@@ -25,10 +25,11 @@
 #define MAX_NHEIGHT 10
 
 //////////////////////////////////////
-// function for test3_99dan_t
+// Functions for test3_99dan_t
 //////////////////////////////////////
-int test3_99dan_input_width_number( int *width_number);
-void test3_99dan_display( int width_number);
+
+void test3_99dan_input_width_number( int *width_number);
+void test3_99dan_display_99dan_result( int width_number);
 
 #endif // #ifndef __TEST3_99DAN_H__
 

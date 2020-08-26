@@ -8,15 +8,7 @@
  * @return 설정하지 않음
  */
 void main(){
-	int rv = CAL_FAIL;
 	int width_number = DEFAULT_INT;
-
-	rv = test3_99dan_input_width_number( &width_number);
-	if( rv < CAL_SUCCESS){
-		printf("\t| ! Input dan number error\n");
-		return ;
-	}
-
+	test3_99dan_input_width_number( &width_number);
 	test3_99dan_display_99dan_result( width_number);
 }
-

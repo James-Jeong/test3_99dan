@@ -1,67 +1,61 @@
 #include "local/test3_99dan_l.h"
 //////////////////////////////////////
-// static function for test3_99dan_t
+// Static function for test3_99dan_t
 //////////////////////////////////////
-static int test3_99dan_input_number( int *val);
+
+static int input_number( int *val);
 
 //////////////////////////////////////
-// local function for test3_99dan_t
+// Local functions for test3_99dan_t
 //////////////////////////////////////
+
 /**
- * @fn int test3_99dan_input_width_number()
+ * @fn void test3_99dan_input_width_number()
  * @brief 가로로 출력하는 단의 개수를 입력받는 함수
  * @param width_number 입력받을 가로로 출력하는 단의 개수
- * @return 입력 성공 여부
+ * @return 반환값 없음
  */
-int test3_99dan_input_width_number( int *width_number){
-	int rv = CAL_FAIL;
-	if( *width_number != DEFAULT_INT) *width_number = DEFAULT_INT;
+void test3_99dan_input_width_number( int *width_number){
+	int return_value = CAL_FAIL;
 
 	while( 1){
-		if(( *width_number == DEFAULT_INT) && ( rv == CAL_FAIL)){
-			printf("\t| @ Enter 99dan width number (1~5)\t: ");
-			rv = test3_99dan_input_number( width_number);
-			if( rv < CAL_SUCCESS) continue;
+		if(( *width_number == DEFAULT_INT) && ( return_value == CAL_FAIL)){
+			printf("\t| @ 가로 출력 개수 입력 (1~5)\t: ");
+			return_value = input_number( width_number);
+			if( return_value == CAL_FAIL) continue;
 		}
-		if(( *width_number != DEFAULT_INT) && ( rv == CAL_SUCCESS)) break;
+		if(( *width_number != DEFAULT_INT) && ( return_value == CAL_SUCCESS)) break;
 	}
-
-	return rv;
 }
 
 /**
  * @fn void test3_99dan_display_99dan_result( int width_number)
  * @brief 구구단을 계산해서 결과를 출력하는 함수, 가로로 출력하는 단의 개수(최대 5개)에 따라 1단부터 10단까지 출력한다.
  * @param width_number 가로로 출력하는 단의 개수
- * @return 설정하지 않음
+ * @return 반환값 없음
  */
 void test3_99dan_display_99dan_result( int width_number){
-	if( width_number > MAX_NWIDTH){
-		printf("\t| ! width_number is over max number(5)!\n");
-		return ;
-	}
-
-	/** accumulative dan number to break loop & check current dan number */
+	/** 반복문 탈출을 위해 단수를 누적해서 기록하는 변수 */
 	int accum_dan = 0;
-	/** temporary width value to print until static width value */
-	int width;
-	/** temporary height value to print until static height value */
-	int height;
-	/** level value to define level, level is the area for printing 99dan by the static value of width & height */
+	/** 구구단 출력을 위한 반복문의 임시 가로 개수 */
+	int width = 1;
+	/** 구구단 출력을 위한 반복문의 임시 세로 개수 */
+	int height = 1;
+	/** 출력 레벨, 구구단이 출력되는 가로 영역 */
 	int level = ( MAX_NCAL / width_number) + 1;
-	/** current level value to check level */
-	int cur_level;
-	/** current 99dan number */
-	int n99dan;
+	/** 현재 레벨을 확인하는 변수 */
+	int cur_level = 1;
+	/** 현재 단수 */
+	int n99dan = 0;
 
 	printf("\n");
-	for( cur_level = 1; cur_level <= level; cur_level++){ // manage level
-		for( height = 1; height <= MAX_NHEIGHT; height++){ // manage height upto MAX_NHEIGHT
-			for( width = 1; width <= width_number; width++){ // manage width upto width_number (input)
+	for( ; cur_level <= level; cur_level++){ // 레벨 관리
+		for( height = 1; height <= MAX_NHEIGHT; height++){ // MAX_NHEIGHT 까지 반복
+			for( width = 1; width <= width_number; width++){ // width_number (input) 까지 반복
 				n99dan = width + accum_dan;
-				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height)); // calculate & print 99dan
+				printf("(%d) X (%d) = %d ", n99dan, height, ( n99dan * height));
 				if( n99dan >= MAX_NCAL) break;
-				if( width != width_number) printf("  \t| "); // print tab
+				if( width != width_number) printf("  \t| ");
 			} printf("\n");
 		} printf("\n");
 		accum_dan += width_number;
@@ -70,31 +64,30 @@ void test3_99dan_display_99dan_result( int width_number){
 }
 
 /**
- * @fn static int test3_99dan_input_number( int *val)
- * @brief 숫자 입력 시 사용될 함수, scanf 사용
+ * @fn static int input_number( int *val)
+ * @brief 숫자 입력 시 사용될 함수
  * @param val 입력받을 int형 정수 변수
- * @return 입력 성공 여부
+ * @return 성공 시 CAL_SUCCESS, 실패 시 CAL_FAIL 을 반환
  */
-static int test3_99dan_input_number( int *val){
-	int rv = scanf( "%d", val);
+static int input_number( int *val){
+	int return_value = scanf( "%d", val);
 
-	if( rv == CAL_FAIL){
-		printf("\t| ! Wrong value, value is not integer!\n");
+	if( return_value == CAL_FAIL){
+		printf("\t| ! 입력 실패, 정수가 아닌 문자열 입력.\n");
 		*val = DEFAULT_INT;
 		while( getchar() != '\n');
-		return rv;
+		return return_value;
 	}
 	else if( *val <= CAL_FAIL){
-		printf("\t| ! Wrong value, value is not positive!\n");
+		printf("\t| ! 입력 실패, 최소 가로 출력 개수(1) 미만\n");
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
 	}
 	else if( *val > MAX_NWIDTH){
-		printf("\t| ! Wrong value, value is over max width number(5)!\n");
+		printf("\t| ! 입력 실패, 최대 가로 출력 개수(5) 초과\n");
 		*val = DEFAULT_INT;
 		return CAL_FAIL;
 	}
 
-	return rv;
+	return return_value;
 }
-
