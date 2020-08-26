@@ -12,9 +12,9 @@
 //////////////////////////////////////
 
 /** 성공 여부 */
-#define CAL_SUCCESS 1
+#define SUCCESS 1
 /** 실패 여부 */
-#define CAL_FAIL 0
+#define FAIL 0
 /** 숫자 정상 입력 확인 여부, 정상 입력 실패 시 해당 변수가 DEFAULT_INT 로 초기화됨 */
 #define DEFAULT_INT INT_MAX
 /** 구구단 진행 최대 단수 */
@@ -28,8 +28,8 @@
 // Functions
 //////////////////////////////////////
 
-void test3_99dan_input_width_number( int *width_number);
-void test3_99dan_display_99dan_result( int width_number);
+void input_width_number( int *width_number);
+void display_99dan_result( int width_number);
 
 #endif // #ifndef __TEST3_99DAN_H__
 

@@ -9,6 +9,6 @@
  */
 void main(){
 	int width_number = DEFAULT_INT;
-	test3_99dan_input_width_number( &width_number);
-	test3_99dan_display_99dan_result( width_number);
+	input_width_number( &width_number);
+	display_99dan_result( width_number);
 }
